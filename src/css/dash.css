@@ -1,0 +1,229 @@
+.nav, .pagination, .carousel, .panel-title a {
+   cursor: pointer;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/index.eot);
+  src: local('Montserrat-Regular'),
+  url(../fonts/index.eot) format('embedded-opentype'),
+  url(../fonts/index.woff)
+  format('woff');
+}
+
+/******************** Left - user and sidebar ********************/
+/*index.ejs*/
+.icon{
+  width: 20px;
+  height: auto;
+  margin-bottom: 32px;
+}
+
+#sidebar-wrapper .menu-icon{
+  width: 30px;
+  height: 20px;
+  float: left;
+  margin-right: 5%;
+  margin-top: 5%;
+  margin-left: -5px;
+  text-align:  center;
+}
+
+#user-wrapper{
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  height: 150px;
+  text-align: center;
+}
+
+#wrapper.toggled #user-wrapper{
+    display: none;
+}
+
+.untoggled{
+  text-align: left;
+}
+
+/******************** Top - Page Indicator ********************/
+/*sidebar and top bar from index.ejs*/
+#pageIndicator{
+  height:30px;
+}
+
+#controlBar .user{
+  width:  50px;
+  height: auto;
+}
+
+/*pagination.ejs */
+#top-menu .pagination>.active>a{
+  border-color:black;
+  color:white;
+  background-color: black;
+}
+
+#top-menu a{
+  background-color: white;
+  color: black;
+  font-weight:bold;
+
+}
+
+#top-menu a:active{
+  border-color:black;
+}
+
+#top-menu a:focus
+{
+    color: white;
+    border-color:black;
+
+}
+
+#top-menu a:hover{
+    color: black;
+    border-color:black;
+
+}
+/******************** Center - Main Window ********************/
+/*dash.ejs*/
+.switch.checked {
+  color: black;
+  background-color: black;
+}
+
+#mainWindow{
+  /*background-color: orange;*/
+}
+
+#map_canvas {
+  position: relative;
+  height: 500px;
+}
+
+.error-parsley{
+  color: red;
+}
+
+.angular-google-map-container {
+  margin-bottom: 12px;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 500px;
+}
+
+/*csv.ejs - CSS for "configurações" buttons*/
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+/*list.ejs - Used to show a icon in order the list of lights elements*/
+.st-sort-ascent:before{
+ content: '\25B2';
+}
+
+.st-sort-descent:before{
+ content: '\25BC';
+}
+
+.lightProblem{
+  color: red;
+}
+
+.lightOk{
+  color: green;
+}
+
+.lightStatus{
+  color: #D8A619;
+}
+
+/*time.ejs*/
+.btn-link {
+  color: black;
+}
+
+canvas.chart{
+    width: 100% !important;
+    /*height: auto !important;*/
+}
+
+.highcharts-container{width:100% !important; height:100% !important;}
+
+/*dash.ejs - Main screen  css for widgets*/
+.groups{
+  height: 330px;
+}
+
+.widget{
+  height: 300px;
+  /*background-color: red;*/
+  text-align: center;
+  /*border: 1px solid rgba(207,207,207,0.61);*/
+  /*border-radius: 6px;*/
+}
+
+#slider .slider-tick{
+	background: #014A94;
+}
+
+#slider .in-selection{
+	background: #D28800;
+}
+
+#slider .slider-handle {
+	background: #D28800;
+}
+
+#slider .slider-selection {
+	background: #F9B333;
+}
+
+.row{
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.highcharts-container { overflow: visible !important; }
+
+/*power.ejs*/
+.iconGroup{
+  color: black;
+  text-decoration: none;
+}
+
+.sample-show-hide {
+  padding:10px;
+  border:1px solid black;
+  background:white;
+}
+
+.sample-show-hide {
+  -webkit-transition:all linear 0.5s;
+  transition:all linear 0.5s;
+}
+
+.sample-show-hide.ng-hide {
+  opacity:0;
+}

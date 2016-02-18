@@ -1,0 +1,211 @@
+<!-- views/login.ejs -->
+<!doctype html>
+<html>
+<head>
+    <title>LightDNA Login</title>
+    <link rel="stylesheet" type="text/css" href="lib/css/main.min.css">
+    <link rel="icon" type="image/png" href="/img/favicon.png">
+    <script type="text/javascript" src="lib/js/main.min.js"></script>
+    <style>
+        /*body        { padding-top:80px; }*/
+        body{
+
+          background: no-repeat center center fixed;
+          -webkit-background-size: cover;
+          -moz-background-size: cover;
+          -o-background-size: cover;
+          /*background-size: cover;*/
+          background-size: 100%;
+        }
+        .card-container.card {
+            min-width: 350px;
+            padding: 40px 40px;
+        }
+
+        .btn {
+            font-weight: 700;
+            height: 36px;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            user-select: none;
+            cursor: default;
+        }
+
+        /*
+         * Card component
+         */
+        .card {
+            background-color: rgba(247, 247, 247, 0.72);
+            /* just in case there no content*/
+            padding: 20px 25px 30px;
+            margin: 0 auto 25px;
+            margin-top: 50px;
+            /* shadows and rounded borders */
+            -moz-border-radius: 2px;
+            -webkit-border-radius: 2px;
+            border-radius: 5px;
+            -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+            -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .profile-img-card {
+            width: 96px;
+            height: 96px;
+            margin: 0 auto 10px;
+            display: block;
+            -moz-border-radius: 50%;
+            -webkit-border-radius: 50%;
+            border-radius: 50%;
+        }
+
+        /*
+         * Form styles
+         */
+        .profile-name-card {
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            margin: 10px 0 0;
+            min-height: 1em;
+        }
+
+        .reauth-email {
+            display: block;
+            color: #404040;
+            line-height: 2;
+            margin-bottom: 10px;
+            font-size: 14px;
+            text-align: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        .form-signin #inputEmail,
+        .form-signin #inputPassword {
+            direction: ltr;
+            height: 44px;
+            font-size: 16px;
+        }
+
+        .form-signin input[type=email],
+        .form-signin input[type=password],
+        .form-signin input[type=text],
+        .form-signin button {
+            width: 100%;
+            display: block;
+            margin-bottom: 10px;
+            z-index: 1;
+            position: relative;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        .form-signin .form-control:focus {
+            border-color: rgb(104, 145, 162);
+            outline: 0;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
+            box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
+        }
+
+        .btn.btn-signin {
+            /*background-color: #4d90fe; */
+            background-color: rgb(104, 145, 162);
+            /* background-color: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));*/
+            padding: 0px;
+            font-weight: 700;
+            font-size: 14px;
+            height: 36px;
+            -moz-border-radius: 3px;
+            -webkit-border-radius: 3px;
+            border-radius: 3px;
+            border: none;
+            -o-transition: all 0.218s;
+            -moz-transition: all 0.218s;
+            -webkit-transition: all 0.218s;
+            transition: all 0.218s;
+        }
+
+        .btn.btn-signin:hover,
+        .btn.btn-signin:active,
+        .btn.btn-signin:focus {
+            background-color: rgb(12, 97, 33);
+        }
+
+        .forgot-password {
+            color: rgb(104, 145, 162);
+        }
+
+        .forgot-password:hover,
+        .forgot-password:active,
+        .forgot-password:focus{
+            color: rgb(12, 97, 33);
+        }
+    </style>
+    <script type="text/javascript">
+      $(document).ready(function(){
+          var images=['/img/image_1.jpg',
+                      // '/img/image_2.jpg',
+                      // '/img/image_3.jpg',
+                      // '/img/image_4.jpg',
+                      '/img/image_5.jpg',
+                      '/img/image_6.jpg',
+                      '/img/image_7.jpg'];
+                      // '/img/image_8.jpg',
+                      // '/img/image_9.jpg',
+                      // '/img/image_10.jpg'];
+
+          var randomNumber = Math.floor(Math.random() * images.length);
+          var bgImg = 'url(' + images[randomNumber] + ')';
+
+          $('body').css({'background':bgImg,
+                        "background-size": "100%"});
+          // $('body').css('background-size:100%');
+          // document.getElementById("body").style.backgroundSize = "100%";
+      });
+    </script>
+</head>
+<body style="font-family: Montserrat;">
+  <div id="main" class="container">
+    <div class="col-sm-4 col-sm-offset-4">
+        <!-- show any messages that come back with authentication -->
+
+
+        <div class="card card-container">
+          <div class="row">
+            <h2>LightDNA™<img src="/img/logo_main.png" alt="AWGES Company" style="margin-top: -15px; width:25%;"/></h2>
+          </div>
+          <div class="row">
+            <form class="form-signin" action="/login" method="post">
+                <div class="form-group">
+                    <!-- <label>Nome de usuário ou e-mail cadastrado:</label> -->
+                    <input type="text" placeholder="email ou username"  class="form-control" name="username">
+                </div>
+                <div class="form-group">
+                    <!-- <label>Senha:</label> -->
+                    <input type="password" placeholder="senha"  class="form-control" name="password">
+                </div>
+
+                <button type="submit" class="btn btn-default">Login</button>
+
+
+                <% if (message.length > 0) { %>
+                    <div class="alert alert-danger"><%= message %></div>
+                <% } %>
+
+                <p>Sem cadastro? <a style="color:white;" href="/signup">Registre-se</a></p>
+
+            </form>
+          </div>
+        </div>
+        <!-- <p>Voltar para <a style="color:white;" href="/"> homepage</a>.</p> -->
+
+    </div>
+  </div>
+</body>
+</html>

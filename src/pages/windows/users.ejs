@@ -1,0 +1,91 @@
+<div class="row" ng-controller="usersCtrl" style="margin-left:15px; margin-right:15px;">
+	<div class="row">
+		<div class="col-xs-12">
+			<table st-table="displayedCollection" st-safe-src="rowCollection" class="table table-hover table-striped">
+				<thead>
+				<tr>
+					<th>Admin</th>
+					<th>Usuário</th>
+					<th>Nome</th>
+					<th>e-mail</th>
+					<th>Criado</th>
+					<th>Atualizado</th>
+				</tr>
+				<tr>
+					<th colspan="7"><input st-search="" class="form-control" placeholder="Pesquise por um usuário" type="text"/></th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr ng-repeat="row in displayedCollection">
+					<td>{{row.profile.admin}}</td>
+					<td>{{row.profile.username}}</td>
+					<td>{{row.profile.firstname+' '+row.profile.lastname}}</td>
+					<td>{{row.profile.mail}}</td>
+					<td>{{row.profile.created | date: "dd/MM/yyyy H:mm:ss a"}}</td>
+					<td >{{row.profile.updated | date: "dd/MM/yyyy H:mm:ss a"}}</td>
+					<td>
+						<button type="button" ng-click="removeUser(row);" class="btn btn-sm btn-danger">
+							<i class="glyphicon glyphicon-remove-circle"></i>
+						</button>
+					</td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-6 col-md-offset-3">
+			<script type="text/javascript">
+			  $(document).ready(function() {
+			    var $form = $('#registro');
+
+			    var $submit = $form.find('submit');
+
+			    var checkValid = function(){
+			     if( $form.parsley('isValid') ) {
+			        $submit.removeAttr("disabled");
+			     } else {
+			        $submit.attr("disabled", "disabled");
+			     }
+			    }
+			    checkValid();
+
+			    $form.parsley( 'addListener', {
+			     onFieldSuccess: function ( elem ) {
+			        checkValid();
+			     }
+			     , onFieldError: function ( elem ) {
+			        checkValid();
+			     }
+			    } );
+			  });
+			</script>
+			<h3><span class="fa fa-sign-in"></span> Registrar</h3>
+			<form ng-submit="adduser()" id="registro" data-parsley-validate="">
+				<label for="firstname">Primeiro Nome:</label>
+				<input type="text" class="form-control" ng-model="user.firstname" name="firstname" data-parsley-minlength="3" data-parsley-trigger="change" required>
+
+				<label for="lastname">Sobrenome:</label>
+				<input type="text" class="form-control" ng-model="user.lastname"  name="lastname" data-parsley-minlength="3"  data-parsley-trigger="change"required>
+
+				<label for="email">E-mail:</label>
+				<input type="email" class="form-control" ng-model="user.email" name="email" data-parsley-trigger="change" required>
+
+				<br>
+				<label>Administrador</label>
+				<input type="checkbox" ng-model="user.admin" ng-true-value="true" ng-false-value="false">
+				<br>
+
+				<br>
+				<label for="username">Nome de usuário:</label>
+				<input type="text" class="form-control"  ng-model="user.username" name="username" data-parsley-minlength="4" data-parsley-trigger="change" required>
+
+				<label for="fullname">Senha:</label>
+				<input type="password" class="form-control"  ng-model="user.password" name="password" data-parsley-type="alphanum" data-parsley-minlength="5" data-parsley-trigger="change" required>
+				<br>
+				<input type="submit" class="btn btn-default btn-md" ng-click="addRandomItem(row)" value="Cadastrar">
+			</form>
+		</div>
+	</div>
+</div>
+<br>

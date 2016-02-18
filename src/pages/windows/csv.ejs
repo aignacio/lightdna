@@ -1,0 +1,64 @@
+<div class="row" ng-controller="csvCtrl">
+	<h2 style="text-align:center;"><span class="fa fa-cog"></span> Configurações:</h2>
+	<!-- <img src="/img/csv.png" width="60px"> -->
+	<b>Arquivos CSV:</b>
+	<br>
+	<div class="row">
+		<div style="text-align:left;" class="row">
+			<ng-csv-import
+				class="import"
+				content="csv.content"
+				header="csv.header"
+				separator="csv.separator"
+				result="csv.result"
+				encoding="csv.encoding"
+				accept="csv.accept">
+			</ng-csv-import>
+		</div>
+		<br>
+		<div style="text-align:left;" class="row">
+			<button type="button" class="btn btn-default" style="text-align:center;" ng-csv="demoCSV" csv-header="['DeviceAddress', 'Nome', 'MAC', 'TAG', 'LAT', 'LONG', 'Grupo', 'Modelo']" filename="demo_lights.csv">Arquivo padrão de configuração</button>
+		</div>
+		<br>
+		<div style="text-align:left;" ng-init="exportLights()" class="row">
+			<button type="button" class="btn btn-default" style="text-align:center;" ng-csv="dataCSV" csv-header="['DeviceAddress', 'Nome', 'MAC', 'TAG', 'LAT', 'LONG', 'Grupo', 'Modelo']" filename="LIGHTDNA_Backup.csv">Backup arquivo csv atual</button>
+		</div>
+	</div>
+	<br>
+	<form style="text-align:left;" ng-init="restoreCfgs()">
+	  <div class="form-group">
+	    <label for="TensaoDaRede">Tensão em volts rms:</label>
+	    <input type="number" ng-model="voltagePlant" class="form-control" id="voltagePlant" style="max-width:400px;" placeholder="Volts (RMS)">
+	  </div>
+		<div class="form-group">
+			<label for="alertsGroup">Número de luminárias para apresentar alerta:</label>
+			<input type="number" ng-model="numberAlert" class="form-control" id="alertGroup" style="max-width:400px;" placeholder="100">
+		</div>
+		<div class="form-group">
+			<!-- <img src="/img/email.png" width="60px"> -->
+			<label for="alertsGroup">Endereço de e-mail para envio dos relatórios:</label>
+			<br>
+			<input type="text" ng-model="emailAlert" class="form-control" id="emailAlert" style="max-width:400px;" placeholder="usuario@email.com">
+		</div>
+		<br>
+		<img src="/img/slack.png" width="200px">
+		<div class="form-group">
+			<label for="alertsGroup">Slack <a href="https://my.slack.com/services/new/incoming-webhook">Webhook URL</a>:</label>
+			<input type="text" ng-model="slackToken" class="form-control" id="slackToken" style="max-width:400px;" placeholder="Registrar">
+		</div>
+		<div class="form-group">
+			<label for="alertsGroup">Canal Slack:</label>
+			<input type="text" ng-model="channelSlack" class="form-control" id="channelSlack" style="max-width:400px;" placeholder="lightdna">
+		</div>
+		<div class="form-group">
+			<label for="alertsGroup">Nome do bot Slack:</label>
+			<input type="text" ng-model="botSlack" class="form-control" id="botSlack" style="max-width:400px;" placeholder="bot">
+		</div>
+		<br>
+		<div class="form-group">
+			<label for="alertsGroup">Tempo para envio dos relatórios:</label>
+			<input type="text" ng-model="timeEmailAlert" class="form-control" id="timeEmailAlert" style="max-width:400px;" placeholder="30 segundos">
+		</div>
+	  <button type="submit" ng-click="saveCfg()" class="btn btn-default">Salvar Configurações</button>
+	</form>
+</div>

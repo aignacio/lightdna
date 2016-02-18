@@ -1,0 +1,14 @@
+{
+  "name": "Leaflet.FeatureGroup.SubGroup",
+  "homepage": "https://github.com/ghybs/Leaflet.FeatureGroup.SubGroup",
+  "_release": "f8e2435864",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "f8e24358649da82bf87c0c2c376f462e3211852c"
+  },
+  "_source": "https://github.com/ghybs/Leaflet.FeatureGroup.SubGroup.git",
+  "_target": "*",
+  "_originalSource": "https://github.com/ghybs/Leaflet.FeatureGroup.SubGroup.git",
+  "_direct": true
+}

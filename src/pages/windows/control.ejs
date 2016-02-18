@@ -1,0 +1,133 @@
+<div class="container-fluid">
+  <h2 style="text-align:center;"><span class="fa fa-tachometer"></span> Controle por Grupos:</h2>
+  <div ng-controller="alertCtrl" class="row">
+    <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
+  </div>
+  <div class="groups" ng-controller="groupCtrl">
+      <script type="text/ng-template" id="modal.html">
+          <div class="modal-header">
+              <h3 class="modal-title">Luminárias offline:</h3>
+              <h4><b>{{groupName.name}}</b></h4>
+          </div>
+          <div class="modal-body">
+            <table st-table="displayedCollection" st-safe-src="rowCollection" style="text-align:center;" class="table table-hover table-striped">
+              <thead>
+              <tr>
+                <th style="text-align:center;"st-sort="TAG">TAG</th>
+                <th style="text-align:center;">Mapa</th>
+              </tr>
+              <tr>
+                <th colspan="2"><input st-search="" class="form-control" placeholder="Pesquise por luminárias" type="text"/></th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr ng-repeat="row in displayedCollection">
+                <td>{{row.TAG}}</td>
+                <td><a ng-click="ZoomLight(row.LAT,row.LONG)"><span class="menu-icon fa fa-map-o" style="color:black;"></span></a></td>
+              </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="2" class="text-center">
+                    <div st-pagination=""  st-template="pages/windows/pagination.ejs" st-items-by-page="itemsByPage" st-displayed-pages="4"></div>
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+          <div class="modal-footer">
+              <button class="btn btn-primary" type="button" ng-click="cancel()">OK</button>
+          </div>
+      </script>
+      <div class="row">
+        <div class="col-md-4 widget">
+            <h3><span>Selecione o grupo:</span></h3>
+            <!-- <h2><button style="width: 50%; height: 50px;" type="button" class="btn btn-default" ng-click="setDimmerGroup()">Setar Valor</button></h2> -->
+            <div class="row">
+              <select class="form-control" style="width:60%; margin:0 auto;" ng-model="group" ng-options="opt for opt in groupopt.values"></select>
+              <br>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-xs-5" style="text-align:center;">
+                Desligado
+              </div>
+              <div class="col-xs-3">
+                <switch id="enabled" size="large" style="margin:0 auto;" name="enabled" ng-model="enabled" class="blue"></switch>
+              </div>
+              <div class="col-xs-4" style="text-align:center;">
+                Dimerizar
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <h5><button type="button" class="btn btn-default" ng-click="setDimmerGroup(group.name,value_$index)">Enviar</button></h5>
+            </div>
+        </div>
+        <div class="col-md-4 widget">
+            <!-- <h3><span>Dimmer:</span></h3> -->
+            <h2><span>{{groupSelected.name}}: <b>{{groupSelected.dimmer}}%</b></span></h2>
+            <div style="width:100%; text-align:center; margin:0 auto;">
+              <ui-knob value="dimmer" options="options"></ui-knob>
+            </div>
+        </div>
+        <div class="col-md-4 widget">
+            <h3><span>Potência Total:</span></h3>
+            <h2><span>{{groupSelected.power/1000 | number:2}}kW</span></h2>
+            <div class="row">
+              <div class="col-xs-6">
+                <div class="row">
+                  <h3 style="color:grey;">Ativas:</h3>
+                </div>
+                <div class="row">
+                  <div class="col-xs-4">
+                    <h2><i style="color:green;" class="fa fa-arrow-up"></i></h2>
+                  </div>
+                  <div class="col-xs-8">
+                    <h2>{{groupSelected.active}}</h2>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <div class="row">
+                  <h3 style="color:grey;">Offline:</h3>
+                </div>
+                <div class="row">
+                  <div class="col-xs-4">
+                    <h2><i style="color:red;" class="fa fa-arrow-down"></i></h2>
+                  </div>
+                  <div class="col-xs-8">
+                    <a style="font-weight:bold; color:black;" type="button" ng-click="offlineLights()">
+                      <h2>{{groupSelected.offline}}</h2>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+      <div class="row">
+        <table st-table="displayedCollection" st-safe-src="rowCollection" class="table table-hover table-striped" style="min-width:200px;">
+          <thead>
+          <tr>
+            <th style="text-align:center;" st-sort="group">Grupo</th>
+            <th style="text-align:center;">Dimmer</th>
+            <th style="text-align:center;">Potência</th>
+            <th style="text-align:center;">Tensão</th>
+          </tr>
+          </thead>
+          <tr>
+  					<th colspan="4"><input st-search="" class="form-control" placeholder="Pesquisar" type="text"/></th>
+  				</tr>
+          <tbody>
+          <tr style="text-align:center;" ng-repeat="row in displayedCollection">
+            <td>{{row.name}}</td>
+            <td>{{row.dimmer}}%</td>
+            <td>{{row.power/1000 | number:2}}kW</td>
+            <td>{{row.voltage}}V</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+</div>

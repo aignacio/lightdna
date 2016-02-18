@@ -1,0 +1,113 @@
+<script type="text/ng-template" id="modalLights.html">
+		<div class="modal-header" style="margin:0 auto; text-align:center;">
+				<h3 class="modal-title" style="margin:0 auto;">Dimmer {{tag}} Individual</h3>
+		</div>
+			<h4 style="margin-left:5%;" ng-if="dimmer.indexOf('Desligada') == false">Valor de dimmer atual:<span style="color:red;"> {{dimmer}}</span></h4>
+			<h4 style="margin-left:5%;" ng-if="dimmer.indexOf('Desligada')">Valor de dimmer atual: {{dimmer}}</h4>
+			<div id="slider" style="width:80%; text-align:center; margin:0 auto;  margin-bottom: 15px;">
+				<slider ng-model="lightSlider.value" ticks="lightSlider.ticks" ticks-labels="lightSlider.labels" min="lightSlider.min" step="lightSlider.step" max="lightSlider.max"></slider>
+			</div>
+		<div class="modal-footer">
+				<button class="btn btn-danger" type="button" ng-click="off()">Desligar</button>
+				<button class="btn btn-success" type="button" ng-click="DimmerLight()">Atuar</button>
+				<button class="btn btn-secondary" type="button" ng-click="cancel()">Fechar</button>
+		</div>
+</script>
+<script type="text/ng-template" id="modal.html">
+		<div class="modal-header">
+				<h3 class="modal-title">Luminária {{lightSelDev.TAG}}:</h3>
+				<h4><b>{{groupName.name}}</b></h4>
+		</div>
+		<div class="modal-body">
+			<div class="row">
+				<div class="col-xs-4">
+					<div class="row">
+						<img src="/img/models/{{lightSpec.model}}.jpg" alt="Imagem da Luminária" style="max-width:100%;  height:auto;"/>
+					</div>
+				</div>
+				<div class="col-xs-8">
+					<div class="row">
+						<b>Nome:</b> {{lightSpec.name}}
+					</div>
+					<div class="row">
+					  <b>Latitude:</b> {{lightSpec.LAT}}
+					</div>
+					<div class="row">
+					  <b>Longitude:</b> {{lightSpec.LONG}}
+					</div>
+					<div class="row">
+					  <b>Endereço MAC:</b> {{lightSpec.MAC}}
+					</div>
+					<div class="row">
+					  <b>Tópico MQTT:</b> lights/{{lightSpec.deviceAddress}}
+					</div>
+					<div class="row">
+					  <b>Modelo:</b> {{lightSpec.model}}
+					</div>
+					<div class="row">
+					  <b>Grupo:</b> {{lightSpec.group.grupo}}
+					</div>
+					<div class="row">
+						<b>Corrente:</b> {{lightSpec.status.current}}mA
+					</div>
+					<div class="row">
+						<b>Dimmer:</b> {{lightSpec.status.dimmer}}%
+					</div>
+					<div class="row">
+						<b>RSSI(Sensibilidade):</b> {{lightSpec.status.rssi}}dBm
+					</div>
+					<div class="row">
+						<b>Endereço IPv4:</b> {{lightSpec.status.ipv4}}
+					</div>
+					<div class="row" ng-if="lightSpec.status.status == 'Ativa'">
+						<b>Status:</b> <span style="color:green; font-weight:bold;">{{lightSpec.status.status}}</span>
+					</div>
+					<div class="row" ng-if="lightSpec.status.status == 'Offline'">
+						<b>Status:</b> <span style="color:red; font-weight:bold;">{{lightSpec.status.status}}</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+				<button class="btn btn-primary" type="button" ng-click="cancel()">OK</button>
+		</div>
+</script>
+<div class="row" ng-controller="listCtrl" style="margin-left:15px; margin-right:15px;">
+	<div class="col-xs-10 col-md-offset-1">
+		<table st-table="displayedCollection" st-safe-src="rowCollection" class="table table-hover table-striped" style="min-width:800px;">
+			<thead>
+			<tr>
+				<th>MAC</th>
+				<th st-sort="TAG">TAG</th>
+				<th>Nome</th>
+				<th>Dimmer</th>
+				<th st-sort="group.grupo">Grupo</th>
+				<th st-sort="status.status">Status</th>
+				<th>Mapa</th>
+			</tr>
+			<tr>
+				<th colspan="7"><input st-search="" class="form-control" placeholder="Pesquise por luminárias" type="text"/></th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr ng-repeat="row in displayedCollection">
+				<td>{{row.MAC}}</td>
+				<td><a style="color:black;" ng-click="pageLight(row.TAG)">{{row.TAG}}</a></td>
+				<td>{{row.name}}</td>
+				<td ng-click="DimmerLight(row.TAG,row.status.dimmer,row.LAT,row.LONG)"><a style="color:black;">{{row.status.dimmer}}</a></td>
+				<td>{{row.group.grupo}}</td>
+				<td ng-class="{true: 'lightOk', false: 'lightStatus'}[row.status.status == 'OK']">{{row.status.status}}</td>
+				<td><a ng-click="ZoomLight(row.LAT,row.LONG)"><span class="menu-icon fa fa-map-o" style="color:black;"></span></a></td>
+			</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="7" class="text-center">
+						<div st-pagination=""  st-template="pages/windows/pagination.ejs" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+</div>
+<br>

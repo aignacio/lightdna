@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en" ng-app="superhero">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>LightDNA</title>
+  <!-- STYLES -->
+  <!-- build:css lib/css/main.min.css -->
+  <link rel="stylesheet" type="text/css" href="css/dash.css">
+  <link rel="stylesheet" type="text/css" href="components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="components/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="custom-components/custom-css/simple-sidebar.css">
+  <link rel="stylesheet" type="text/css" href="components/parsleyjs/src/parsley.css">
+  <link rel="stylesheet" type="text/css" href="components/parsleyjs/src/parsley.css">
+  <link rel="stylesheet" type="text/css" href="components/angular-kk-timepicker/dist/angular-kk-timepicker.css">
+  <link rel="stylesheet" type="text/css" href="components/seiyria-bootstrap-slider/dist/css/bootstrap-slider.css">
+  <link rel="stylesheet" type="text/css" href="components/angular-chart.js/dist/angular-chart.css" />
+  <link rel="stylesheet" type="text/css" href="components/epoch/dist/css/epoch.min.css" />
+  <!-- <link rel="stylesheet" type="text/css" href="components/angular-bootstrap-grid-tree/src/treeGrid.css" /> -->
+  <link rel="stylesheet" type="text/css" href="components/angular-tree-dnd/dist/ng-tree-dnd.css" />
+  <link rel="stylesheet" type="text/css" href="components/spinkit/css/spinkit.css" />
+  <link rel="stylesheet" type="text/css" href="components/angular-ui-switch/angular-ui-switch.min.css" />
+
+
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <!-- endbuild -->
+  <!-- SCRIPTS -->
+  <!-- build:js lib/js/main.min.js -->
+  <script type="text/javascript" src="components/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="components/angular/angular.js"></script>
+  <script type="text/javascript" src="components/angular-knob/src/angular-knob.js"></script>
+  <script type="text/javascript" src="components/jquery-knob/dist/jquery.knob.min.js"></script>
+  <script type="text/javascript" src="components/angular-route/angular-route.js"></script>
+  <script type="text/javascript" src="components/angular-animate/angular-animate.js"></script>
+  <script type="text/javascript" src="components/bootstrap/dist/js/bootstrap.js"></script>
+  <script type="text/javascript" src="components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+  <script type="text/javascript" src="components/lodash/lodash.min.js"></script>
+  <script type="text/javascript" src="components/angular-simple-logger/dist/angular-simple-logger.min.js"></script>
+  <!-- <script type="text/javascript" src="components/angular-google-maps/dist/angular-google-maps.min.js"></script> -->
+  <script type="text/javascript" src="components/angular-smart-table/dist/smart-table.js"></script>
+  <script type="text/javascript" src="custom-components/custom-js/parsley.js"></script>
+  <script type="text/javascript" src="components/angular-location-update/angular-location-update.min.js"></script>
+  <script type="text/javascript" src="custom-components/custom-js/angular-csv-import.js"></script>
+  <script type="text/javascript" src="components/ng-csv/build/ng-csv.min.js"></script>
+  <script type="text/javascript" src="components/angular-sanitize/angular-sanitize.min.js"></script>
+  <script type="text/javascript" src="components/nouislider/distribute/nouislider.min.js"></script>
+  <script type="text/javascript" src="components/seiyria-bootstrap-slider/js/bootstrap-slider.js"></script>
+  <script type="text/javascript" src="components/js-marker-clusterer/src/markerclusterer_compiled.js"></script>
+  <script type="text/javascript" src="components/angular-bootstrap-slider/slider.js"></script>
+  <script type="text/javascript" src="components/angular-kk-timepicker/dist/angular-kk-timepicker.js"></script>
+  <script type="text/javascript" src="components/angular-kk-timepicker/dist/angular-kk-timepicker.tpl.js"></script>
+  <script type="text/javascript" src="components/angular-resource/angular-resource.min.js"></script>
+  <script type="text/javascript" src="components/angular-resource/angular-resource.min.js"></script>
+  <script type="text/javascript" src="components/jquery-domchange/dist/jquery.domchange.min.js"></script>
+  <!-- <script type="text/javascript" src="components/d3/d3.js"></script> -->
+  <!-- <script type="text/javascript" src="components/epoch/dist/js/epoch.min.js"></script> -->
+  <!-- <script type="text/javascript" src="components/zingchart/client/zingchart.min.js"></script> -->
+  <!-- <script type="text/javascript" src="components/zingchart/client/zingchart.min.js"></script> -->
+  <!-- <script type="text/javascript" src="components/zingchart-angularjs/src/zingchart-angularjs.js"></script> -->
+  <script type="text/javascript" src="components/angular-tree-dnd/dist/ng-tree-dnd.js"></script>
+  <!-- <script type="text/javascript" src="components/bootstrap-gtreetable/dist/bootstrap-gtreetable.js"></script> -->
+  <!-- <script type="text/javascript" src="components/angular-bootstrap-grid-tree/src/tree-grid-directive.js"></script> -->
+  <script type="text/javascript" src="components/d3/d3.js"></script>
+  <script type="text/javascript" src="components/ng-knob/dist/ng-knob.js"></script>
+  <script type="text/javascript" src="components/moment/min/moment.min.js"></script>
+  <script type="text/javascript" src="components/angular/angular.min.js"></script>
+  <script type="text/javascript" src="components/Chart.js/Chart.min.js"></script>
+  <script type="text/javascript" src="components/angular-chart.js/dist/angular-chart.min.js"></script>
+  <script type="text/javascript" src="components/angular-chart.js/dist/angular-chart.min.js"></script>
+  <script type="text/javascript" src="components/highcharts-release/highcharts.js"></script>
+  <script type="text/javascript" src="components/highcharts-release/modules/exporting.js"></script>
+  <script type="text/javascript" src="components/jquery-knob/dist/jquery.knob.min.js"></script>
+  <script type="text/javascript" src="components/angular-ui-switch/angular-ui-switch.min.js"></script>
+
+  <!-- endbuild -->
+  <script src="https://maps.googleapis.com/maps/api/js"></script>
+
+
+  <!-- Custom Scripts -->
+  <script type="text/javascript" src="js/lightdna.min.js"></script>
+</head>
+<body style="font-family: Montserrat;">
+  <div id="wrapper" class="toggled">
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+      <ul class="sidebar-nav">
+        <li class="sidebar-brand">
+            <a href="#"><span class="menu-icon"><img src="/img/awges.png" alt="logo" class="icon"/></span>LightDNA</a>
+        </li>
+        <li onclick="pageInd(this.id)" id="1" class="sidebar-list">
+          <a href="#/dash"><span class="menu-icon fa fa-laptop"></span>Principal</a>
+        </li>
+        <li onclick="pageInd(this.id)" id="9" class="sidebar-list">
+          <% if(user.profile.admin) { %>
+          <a href="#/control"><span class="menu-icon fa fa-tachometer"></span>Controle</a>
+          <% } %>
+        </li>
+        <li onclick="pageInd(this.id)" id="2" class="sidebar-list">
+          <a href="#/list"><span class="menu-icon fa fa-list-ul"></span>Lista de Luminárias</a>
+        </li>
+        <li onclick="pageInd(this.id)" id="3" class="sidebar-list">
+          <% if(user.profile.admin) { %>
+          <a href="#/time"><span class="menu-icon fa fa-clock-o"></span>Relógio</a>
+          <% } %>
+        </li>
+        <li onclick="pageInd(this.id)" id="4" class="sidebar-list">
+          <% if(user.profile.admin) { %>
+          <a href="#/csv"><span class="menu-icon fa fa-cog"></span>Configurações</a>
+          <% } %>
+        </li>
+        <!-- <li onclick="pageInd(this.id)" id="5" class="sidebar-list"> -->
+          <!-- <a href="#/power"><span class="menu-icon fa fa-bolt"></span>Potência</a> -->
+        <!-- </li> -->
+        <!-- <li onclick="pageInd(this.id)" id="6" class="sidebar-list">
+          <a href="#/visual"><span class="menu-icon fa fa-bolt"></span>Aparência</a>
+        </li> -->
+        <li onclick="pageInd(this.id)" id="7" class="sidebar-list">
+          <% if(user.profile.admin) { %>
+          <a href="#/users"><span class="menu-icon fa fa-user"></span>Usuários</a>
+          <% } %>
+        </li>
+        <li onclick="pageInd(this.id)" id="14" class="sidebar-list">
+          <a href="#/about"><span class="menu-icon fa fa-info"></span>Sobre</a>
+        </li>
+      </ul>
+      <!-- User Wrapper -->
+      <div id="user-wrapper ">
+          <h5 style="color:#848484; text-decoration:none;">
+            Bem vindo,
+          </h5>
+          <h4 style="color:#848484; text-decoration:none;">
+            <%= user.profile.firstname %>
+            <script type="text/javascript">
+              var loginUser= "<%= user.profile.username %>";
+            </script>
+          </h4>
+          <a href="/logout" style="color: white; text-decoration:none;">
+            Logout
+          </a>
+          <br>
+          <a href="#/pass" id="8" onclick="pageInd(this.id)" style="color: white; text-decoration:none;">
+            Alterar a senha
+          </a>
+      </div>
+    </div>
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+            <!-- Page bar -->
+            <div class="col-lg-12">
+              <div class="row">
+                <div id="pageIndicator"></div>
+              </div>
+            </div>
+            </div>
+            <!-- Main Content -->
+            <div id="mainWindow" class="row">
+              <div ng-view></div>
+            </div>
+        </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+  </div>
+</body>
+</html>

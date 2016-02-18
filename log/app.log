@@ -1,0 +1,16 @@
+Fri, 12 Feb 2016 01:09:24 GMT body-parser deprecated bodyParser: use individual json/urlencoded middlewares at server.js:29:9
+Fri, 12 Feb 2016 01:09:24 GMT body-parser deprecated undefined extended: provide extended option at node_modules/body-parser/index.js:105:29
+Fri, 12 Feb 2016 01:09:24 GMT express-session deprecated undefined resave option; provide resave option at server.js:34:9
+Fri, 12 Feb 2016 01:09:24 GMT express-session deprecated undefined saveUninitialized option; provide saveUninitialized option at server.js:34:9
+Warning: connect.session() MemoryStore is not
+designed for a production environment, as it will leak
+memory, and will not scale past a single process.
+[LightDNA] Server listening on port:80
+
+/home/aignacio/projects/lightdna/node_modules/mongoose/node_modules/mongodb/lib/server.js:235
+        process.nextTick(function() { throw err; })
+                                      ^
+Error: connect ECONNREFUSED 127.0.0.1:27017
+    at Object.exports._errnoException (util.js:849:11)
+    at exports._exceptionWithHostPort (util.js:872:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1060:14)
